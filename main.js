@@ -10,6 +10,24 @@
 
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import NissiBeach_r from "./envImage/Nissi-beach/Nissi-beach_r.jpg";
+import NissiBeach_l from "./envImage/Nissi-beach/Nissi-beach_l.jpg";
+import NissiBeach_u from "./envImage/Nissi-beach/Nissi-beach_u.jpg";
+import NissiBeach_d from "./envImage/Nissi-beach/Nissi-beach_d.jpg";
+import NissiBeach_f from "./envImage/Nissi-beach/Nissi-beach_f.jpg";
+import NissiBeach_b from "./envImage/Nissi-beach/Nissi-beach_b.jpg";
+import ArstaBridge_r from "./envImage/Arsta-bridge/Arsta-bridge_r.jpg";
+import ArstaBridge_l from "./envImage/Arsta-bridge/Arsta-bridge_l.jpg";
+import ArstaBridge_u from "./envImage/Arsta-bridge/Arsta-bridge_u.jpg";
+import ArstaBridge_d from "./envImage/Arsta-bridge/Arsta-bridge_d.jpg";
+import ArstaBridge_f from "./envImage/Arsta-bridge/Arsta-bridge_f.jpg";
+import ArstaBridge_b from "./envImage/Arsta-bridge/Arsta-bridge_b.jpg";
+import earth_r from "./envImage/earth/earth_r.jpg";
+import earth_l from "./envImage/earth/earth_l.jpg";
+import earth_u from "./envImage/earth/earth_u.jpg";
+import earth_d from "./envImage/earth/earth_d.jpg";
+import earth_f from "./envImage/earth/earth_f.jpg";
+import earth_b from "./envImage/earth/earth_b.jpg";
 
 const canvas = document.getElementById("canvas");
 
@@ -38,20 +56,27 @@ renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(window.devicePixelRatio);
 
 // envImage
-const paths = [
-  "Nissi-beach/Nissi-beach",
-  "Arsta-bridge/Arsta-bridge",
-  "earth/earth",
+const urlSets = [
+  [
+    NissiBeach_r,
+    NissiBeach_l,
+    NissiBeach_u,
+    NissiBeach_d,
+    NissiBeach_f,
+    NissiBeach_b,
+  ],
+  [
+    ArstaBridge_r,
+    ArstaBridge_l,
+    ArstaBridge_u,
+    ArstaBridge_d,
+    ArstaBridge_f,
+    ArstaBridge_b,
+  ],
+  [earth_r, earth_l, earth_u, earth_d, earth_f, earth_b],
 ];
 let pathIdx = 0;
-let urls = [
-  `./envImage/${paths[pathIdx]}_r.jpg`,
-  `./envImage/${paths[pathIdx]}_l.jpg`,
-  `./envImage/${paths[pathIdx]}_u.jpg`,
-  `./envImage/${paths[pathIdx]}_d.jpg`,
-  `./envImage/${paths[pathIdx]}_f.jpg`,
-  `./envImage/${paths[pathIdx]}_b.jpg`,
-];
+let urls = urlSets[pathIdx];
 
 // 背景に環境マップを読み込み
 const loader = new THREE.CubeTextureLoader();
@@ -99,13 +124,6 @@ document.getElementById("sphere").addEventListener("click", () => {
 // scene 切り替えボタン
 document.getElementById("view").addEventListener("click", () => {
   pathIdx = pathIdx === 0 ? 1 : pathIdx === 1 ? 2 : 0;
-  urls = [
-    `./envImage/${paths[pathIdx]}_r.jpg`,
-    `./envImage/${paths[pathIdx]}_l.jpg`,
-    `./envImage/${paths[pathIdx]}_u.jpg`,
-    `./envImage/${paths[pathIdx]}_d.jpg`,
-    `./envImage/${paths[pathIdx]}_f.jpg`,
-    `./envImage/${paths[pathIdx]}_b.jpg`,
-  ];
+  urls = urlSets[pathIdx];
   scene.background = loader.load(urls);
 });
