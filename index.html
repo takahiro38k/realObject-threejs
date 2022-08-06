@@ -1,0 +1,67 @@
+<!-- https://www.youtube.com/watch?v=YHT8arVWXWI -->
+<!-- https://github.com/Shin-sibainu/cubecamera-envmap -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ThreeJs-realObject</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      canvas {
+        animation: fadeIn 1s ease 0s 1 normal;
+      }
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      canvas {
+        vertical-align: top;
+      }
+      input {
+        background-color: transparent;
+        border-radius: 8px;
+        width: 80px;
+        height: 36px;
+        color: #c2c1c1;
+        font-size: 16px;
+        font-weight: bold;
+        border: 2px solid #c2c1c1;
+      }
+      input:hover {
+        background-color: #dbdbdb45;
+      }
+      input:active {
+        background-color: #00d5ff91;
+      }
+      #sphere {
+        position: fixed;
+        bottom: 24px;
+        left: 24px;
+        z-index: 10;
+      }
+      #view {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        z-index: 10;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <canvas id="canvas"></canvas>
+    </div>
+    <input type="button" value="Sphere" id="sphere" />
+    <input type="button" value="View" id="view" />
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
